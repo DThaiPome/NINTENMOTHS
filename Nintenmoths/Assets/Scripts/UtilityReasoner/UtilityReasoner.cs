@@ -2,37 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UtilityReasoner<T> where T : IReasonerAction
+public class UtilityReasoner : MonoBehaviour
 {
-    private T actionState;
-    private List<AConsideration> considerations;
+    List<ReasonerOption> options;
+    ReasonerOption chosenOption;
 
-    public UtilityReasoner(T action, List<AConsideration> considerations)
+    private void Awake()
     {
-        this.actionState = action;
-        this.considerations = new List<AConsideration>(considerations);
+        options = new List<ReasonerOption>(Util.GetComponentsInChildrenNonRecursive<ReasonerOption>(this));
     }
 
-    public T action
+    public IReasonerAction ChooseAction()
     {
-        get {
-            return actionState;
-        }
-        private set
+        ReasonerOption maxOption = null;
+        float maxWeight = float.NegativeInfinity;
+        foreach (var option in options)
         {
-            actionState = value;
+            float weight = option.CalculateWeight();
+            if (weight > maxWeight)
+            {
+                maxWeight = weight;
+                maxOption = option;
+            }
         }
+        return (chosenOption = maxOption).action;
     }
 
-    float CalculateWeight()
+    public IReasonerAction GetChosenAction()
     {
-        float addend = 0;
-        float coeff = 1;
-        foreach(var consideration in considerations) {
-            consideration.Calculate();
-            addend += consideration.calculatedAddend;
-            coeff *= consideration.calculatedCoeff;
-        }
-        return addend * coeff;
+        return chosenOption.action;
     }
 }

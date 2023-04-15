@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class RandomConsideration : AConsideration
 {
+    [SerializeField]
     private float addendMin, addendMax, coeffMin, coeffMax;
-
-    public RandomConsideration(float addendMin, float addendMax, float coeffMin, float coeffMax)
-    {
-        this.addendMin = addendMin;
-        this.addendMax = addendMax;
-        this.coeffMin = coeffMin;
-        this.coeffMax = coeffMax;
-    }
 
     public override void Calculate()
     {

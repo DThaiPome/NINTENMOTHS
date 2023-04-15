@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AConsideration
+public abstract class AConsideration : MonoBehaviour
 {
-
-    public AConsideration() { }
-
     public abstract void Calculate();
 
     protected float addend = 0f;
