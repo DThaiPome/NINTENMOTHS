@@ -10,6 +10,7 @@ public class Moth_Movement: MonoBehaviour
     public string destStateKey;
     public GlobalActorState globalState;
     public string currentPosObj = "";
+    public int hungerRecoveryFromPellets = 2;
 
     public float pos_xbound = 9;
     public float neg_xbound = -9;
@@ -19,6 +20,8 @@ public class Moth_Movement: MonoBehaviour
     public float y_pos = 0;
     public float speed = 1;
     private Vector3 next_pos= new Vector3(0, 0, -10);
+
+    private MothState state;
 
     private bool moving = false;
     // Start is called before the first frame update
@@ -33,6 +36,7 @@ public class Moth_Movement: MonoBehaviour
         {
             SetPosToObject(currentPosObj);
         }
+        state = GetComponent<MothState>();
     }
 
     // Update is called once per frame
@@ -59,6 +63,8 @@ public class Moth_Movement: MonoBehaviour
         if (other.CompareTag("FoodPellet") && moving)
         {
             Destroy(other.gameObject);
+            state.hunger -= hungerRecoveryFromPellets;
+            state.hunger = Mathf.Max(0, state.hunger);
         }
     }
 
