@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ABTNode : MonoBehaviour
+public abstract class ABTNode : AReasonerAction
 {
     private ABTNode parentNode;
     private bool isRunning;
@@ -40,6 +40,11 @@ public abstract class ABTNode : MonoBehaviour
             isRunning = false;
         }
         return result;
+    }
+
+    public override BTResult RunAction()
+    {
+        return UpdateNode();
     }
 
     public bool IsRunning()
