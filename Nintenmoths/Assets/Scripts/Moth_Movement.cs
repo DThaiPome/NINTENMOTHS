@@ -38,4 +38,9 @@ public class Moth_Movement: MonoBehaviour
         }
         
     }
+
+    public void Assign_Next_Pos(Vector3 next_position)
+    {
+        this.next_pos = next_position;
+    }
 }
