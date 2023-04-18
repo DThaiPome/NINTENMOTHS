@@ -25,7 +25,8 @@ public class BTSetRandomObjectName : ABTNode
             int rand = Random.Range(0, destObjects.Length);
             string name = destObjects[rand].name;
             TryReplaceUpperContextVal(contextKey, name);
+            return BTResult.SUCCESS;
         }
-        return BTResult.SUCCESS;
+        return BTResult.FAILURE;
     }
 }

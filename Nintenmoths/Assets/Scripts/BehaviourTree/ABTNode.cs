@@ -30,6 +30,7 @@ public abstract class ABTNode : AReasonerAction
     {
         if (!isRunning)
         {
+            // Debug.Log(gameObject.name);
             OnInitialize();
             isRunning = true;
         }

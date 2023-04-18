@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class Moth_Movement: MonoBehaviour
 {
+    public string destStateKey;
+    public GlobalActorState globalState;
+    public string currentPosObj = "";
+    public int hungerRecoveryFromPellets = 2;
 
     public float pos_xbound = 9;
     public float neg_xbound = -9;
@@ -16,20 +20,31 @@ public class Moth_Movement: MonoBehaviour
     public float y_pos = 0;
     public float speed = 1;
     private Vector3 next_pos= new Vector3(0, 0, -10);
+
+    private MothState state;
+
+    private bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
         this.x_pos = 0;
         this.y_pos = 5;
         this.next_pos = new Vector3(Random.Range(pos_xbound, neg_xbound), Random.Range(pos_ybound, neg_ybound), -10);
-}
+        moving = true;
+        globalState.SetVal(destStateKey, currentPosObj);
+        if (currentPosObj != "")
+        {
+            SetPosToObject(currentPosObj);
+        }
+        state = GetComponent<MothState>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if(transform.position == this.next_pos)
         {
-            this.next_pos = new Vector3(Random.Range(pos_xbound, neg_xbound), Random.Range(pos_ybound, neg_ybound), -10);
+            moving = false;
         }
         else
         {
@@ -37,6 +52,36 @@ public class Moth_Movement: MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, this.next_pos, step);
         }
         
+        if (globalState.TryGetVal(destStateKey, out string statePosObj) && statePosObj != currentPosObj)
+        {
+            SetPosToObject(statePosObj);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FoodPellet") && moving)
+        {
+            Destroy(other.gameObject);
+            state.hunger -= hungerRecoveryFromPellets;
+            state.hunger = Mathf.Max(0, state.hunger);
+        }
+    }
+
+    private void SetPosToObject(string name)
+    {
+        currentPosObj = name;
+        GameObject obj = GameObject.Find(currentPosObj);
+        if (obj != null)
+        {
+            Assign_Next_Pos(obj.transform.position);
+            moving = true;
+        }
+        else
+        {
+            currentPosObj = "";
+            globalState.SetVal(destStateKey, "");
+        }
     }
 
     public void Assign_Next_Pos(Vector3 next_position)
