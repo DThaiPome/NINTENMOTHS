@@ -54,12 +54,28 @@ public class Moth_Movement: MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FoodPellet") && moving)
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
     private void SetPosToObject(string name)
     {
         currentPosObj = name;
         GameObject obj = GameObject.Find(currentPosObj);
-        Assign_Next_Pos(obj.transform.position);
-        moving = true;
+        if (obj != null)
+        {
+            Assign_Next_Pos(obj.transform.position);
+            moving = true;
+        }
+        else
+        {
+            currentPosObj = "";
+            globalState.SetVal(destStateKey, "");
+        }
     }
 
     public void Assign_Next_Pos(Vector3 next_position)

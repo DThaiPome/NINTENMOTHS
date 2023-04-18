@@ -16,6 +16,8 @@ public class SpawnFood : MonoBehaviour
     private bool holdingFood;
     private GameObject currentFood;
 
+    private static int count = 0;
+
     public static Action<Vector3> onFoodSpawn;
 
     void Start()
@@ -50,6 +52,7 @@ public class SpawnFood : MonoBehaviour
     private void FoodStart()
     {
         currentFood = Instantiate(foodPrefab);
+        currentFood.name = currentFood.name + ":" + (count++);
         currentFood.transform.position = GetPositionFromMouse();
         if (onFoodSpawn != null)
         {
