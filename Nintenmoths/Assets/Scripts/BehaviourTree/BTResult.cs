@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IReasonerAction
+public enum BTResult
 {
-    BTResult RunAction();
+    RUNNING,
+    SUCCESS,
+    FAILURE
 }

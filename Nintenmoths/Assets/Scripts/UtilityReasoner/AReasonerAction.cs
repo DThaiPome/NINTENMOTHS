@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class AReasonerAction : MonoBehaviour, IReasonerAction
 {
-    public abstract void RunAction();
+    public abstract BTResult RunAction();
 }

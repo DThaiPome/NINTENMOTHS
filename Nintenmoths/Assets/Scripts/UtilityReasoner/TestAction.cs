@@ -7,8 +7,9 @@ public class TestAction : AReasonerAction
     [SerializeField]
     private string message;
 
-    public override void RunAction()
+    public override BTResult RunAction()
     {
         Debug.Log(message);
+        return BTResult.SUCCESS;
     }
 }
