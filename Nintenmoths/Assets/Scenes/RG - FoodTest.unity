@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 409886905}
   - component: {fileID: 409886904}
   - component: {fileID: 409886903}
+  - component: {fileID: 409886907}
   m_Layer: 0
   m_Name: Moth
   m_TagString: Untagged
@@ -403,6 +404,19 @@ MonoBehaviour:
   maxHunger: 10
   maxThirst: 10
   maxExhaustion: 10
+--- !u!114 &409886907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409886897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7902810a29e1e5d469fadc059eedced5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalState: {fileID: 409886905}
 --- !u!1 &1547199608
 GameObject:
   m_ObjectHideFlags: 0
