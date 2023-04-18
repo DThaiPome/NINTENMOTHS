@@ -33,8 +33,12 @@ public class MothLearning : MonoBehaviour
     {
         if (mothState.hunger >= weightDecayHungerMinimum)
         {
-            float deltaWeight = weightDecayRate * Time.deltaTime;
-            learningStore.ModifyLastActionWeight(deltaWeight);
+            string lastKey = learningStore.GetLastActionKey();
+            if (lastKey != null && learningStore.GetLearnedWeight(lastKey) > 50)
+            {
+                float deltaWeight = weightDecayRate * Time.deltaTime;
+                learningStore.ModifyLastActionWeight(deltaWeight);
+            }
         }
     }
 
