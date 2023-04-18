@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpawnFood : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SpawnFood : MonoBehaviour
     private bool holdingFood;
     private GameObject currentFood;
 
+    public static Action<Vector3> onFoodSpawn;
+
     void Start()
     {
         cooldownSecondsRemaining = 0;
@@ -28,7 +31,7 @@ public class SpawnFood : MonoBehaviour
         if (cooldownSecondsRemaining <= 0 && !holdingFood && Input.GetButtonDown(axis))
         {
             holdingFood = true;
-            FoodStart();   
+            FoodStart();
         }
         if (holdingFood)
         {
@@ -48,6 +51,10 @@ public class SpawnFood : MonoBehaviour
     {
         currentFood = Instantiate(foodPrefab);
         currentFood.transform.position = GetPositionFromMouse();
+        if (onFoodSpawn != null)
+        {
+            onFoodSpawn.Invoke(currentFood.transform.position);
+        }
     }
 
     private void FoodHolding()
