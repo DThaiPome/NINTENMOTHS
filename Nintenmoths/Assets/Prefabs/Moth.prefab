@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 1631324761910767915}
   - component: {fileID: 2032323443}
   - component: {fileID: 3210498586661852420}
-  - component: {fileID: 7540157662457639237}
   m_Layer: 0
   m_Name: Moth
   m_TagString: Untagged
@@ -227,21 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalState: {fileID: 8736269390309411236}
---- !u!114 &7540157662457639237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301319709118919336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb33ce13ddef1204d93ba26ac760a1bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodPrefab: {fileID: 8307770485877121272, guid: a4a65c362200c2f4185d1df38488ffd0, type: 3}
-  foodCooldownSeconds: 2
-  axis: Fire2
 --- !u!1001 &1788525282422704073
 PrefabInstance:
   m_ObjectHideFlags: 0

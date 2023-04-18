@@ -613,6 +613,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2375875961061226918}
     m_Modifications:
+    - target: {fileID: -7229894847098178841, guid: 90f4ebb9e2f508c45b2d63224227c3d6, type: 3}
+      propertyPath: useContext
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5967713682384738818, guid: 90f4ebb9e2f508c45b2d63224227c3d6, type: 3}
       propertyPath: m_Name
       value: WaitForSeconds
@@ -3002,6 +3006,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6180014561352722181}
     m_Modifications:
+    - target: {fileID: -8683829903345673919, guid: 88b35e3a25de2924dac8a9c4dc49be30, type: 3}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5096573241355804942, guid: 88b35e3a25de2924dac8a9c4dc49be30, type: 3}
       propertyPath: m_Name
       value: ObjectsNearby
