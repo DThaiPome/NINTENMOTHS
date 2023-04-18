@@ -9,11 +9,15 @@ public class LearningStore : MonoBehaviour
 
     private Dictionary<string, float> learnedValues;
 
-    private string lastActionKey;
+    [SerializeField]
+    private float actionKeyCacheSize = 3;
+
+    private Queue<string> lastActionKeys;
 
     private void Awake()
     {
         learnedValues = new Dictionary<string, float>();
+        lastActionKeys = new Queue<string>();
     }
 
     private void Start()
@@ -46,19 +50,33 @@ public class LearningStore : MonoBehaviour
 
     public string GetLastActionKey()
     {
-        return lastActionKey;
+        if (lastActionKeys.Count > 0)
+        {
+            return lastActionKeys.Peek();
+        }
+        return null;
     }
 
     public void SetLastActionKey(string key)
     {
-        lastActionKey = key;
+        while (lastActionKeys.Count >= actionKeyCacheSize)
+        {
+            lastActionKeys.Dequeue();
+        }
+        lastActionKeys.Enqueue(key);
     }
 
     public void ModifyLastActionWeight(float deltaWeight)
     {
-        if (lastActionKey != null)
+        if (lastActionKeys.Count > 0)
         {
-            ModifyLearnedWeight(lastActionKey, deltaWeight);
+            int i = 0;
+            foreach (string key in lastActionKeys)
+            {
+                float adjustedDeltaWeight = deltaWeight * Mathf.Pow(.5f, lastActionKeys.Count - 1 - i);
+                ModifyLearnedWeight(key, adjustedDeltaWeight);
+                i++;
+            }
         }
     }
 }
