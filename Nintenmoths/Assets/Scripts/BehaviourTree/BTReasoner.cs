@@ -15,6 +15,10 @@ public class BTReasoner : ABTNode
     protected override void OnInitialize()
     {
         currentAction = reasoner.ChooseAction();
+        if (currentAction is ABTNode)
+        {
+            ((ABTNode)currentAction).SetParent(this);
+        }
     }
 
     protected override void OnTerminate(BTResult result)
