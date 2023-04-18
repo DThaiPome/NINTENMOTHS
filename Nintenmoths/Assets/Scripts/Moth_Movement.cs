@@ -30,13 +30,14 @@ public class Moth_Movement: MonoBehaviour
         this.x_pos = 0;
         this.y_pos = 5;
         this.next_pos = new Vector3(Random.Range(pos_xbound, neg_xbound), Random.Range(pos_ybound, neg_ybound), -10);
+        state = GetComponent<MothState>();
         moving = true;
+        state.moving = true;
         globalState.SetVal(destStateKey, currentPosObj);
         if (currentPosObj != "")
         {
             SetPosToObject(currentPosObj);
         }
-        state = GetComponent<MothState>();
     }
 
     // Update is called once per frame
@@ -45,6 +46,7 @@ public class Moth_Movement: MonoBehaviour
         if(transform.position == this.next_pos)
         {
             moving = false;
+            state.moving = false;
         }
         else
         {
@@ -76,6 +78,7 @@ public class Moth_Movement: MonoBehaviour
         {
             Assign_Next_Pos(obj.transform.position);
             moving = true;
+            state.moving = true;
         }
         else
         {
