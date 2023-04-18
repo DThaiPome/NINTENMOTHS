@@ -61,4 +61,9 @@ public class Moth_Movement: MonoBehaviour
         next_pos = obj.transform.position;
         moving = true;
     }
+
+    public void Assign_Next_Pos(Vector3 next_position)
+    {
+        this.next_pos = next_position;
+    }
 }
