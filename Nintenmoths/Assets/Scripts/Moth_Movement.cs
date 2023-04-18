@@ -58,7 +58,7 @@ public class Moth_Movement: MonoBehaviour
     {
         currentPosObj = name;
         GameObject obj = GameObject.Find(currentPosObj);
-        next_pos = obj.transform.position;
+        Assign_Next_Pos(obj.transform.position);
         moving = true;
     }
 
