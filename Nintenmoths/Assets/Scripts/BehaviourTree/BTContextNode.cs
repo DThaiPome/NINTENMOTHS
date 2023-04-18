@@ -7,12 +7,21 @@ public class BTContextNode : ABTNode
 {
     [SerializeField]
     private List<FloatVal> floatVals;
+    [SerializeField]
+    private List<StringVal> stringVals;
 
     [Serializable]
     private class FloatVal
     {
         public string key;
         public float val;
+    }
+
+    [Serializable]
+    private class StringVal
+    {
+        public string key;
+        public string val;
     }
 
     private ABTNode child;
@@ -22,6 +31,10 @@ public class BTContextNode : ABTNode
         foreach (FloatVal floatVal in floatVals)
         {
             ourContext.SetVal(floatVal.key, floatVal.val);
+        }
+        foreach (StringVal stringVal in stringVals)
+        {
+            ourContext.SetVal(stringVal.key, stringVal.val);
         }
         child = Util.GetComponentInChildrenNonRecursive<ABTNode>(this);
         child.SetParent(this);
