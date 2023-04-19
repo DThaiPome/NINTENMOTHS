@@ -19,7 +19,7 @@ public class ModifierConsideration : AConsideration
     public override void Calculate()
     {
         consideration.Calculate();
-        addend = (((addend + a1) * a2) + a3);
-        coeff = (((coeff + c1) * c2) + c3);
+        addend = (((consideration.calculatedAddend + a1) * a2) + a3);
+        coeff = (((consideration.calculatedCoeff+ c1) * c2) + c3);
     }
 }
