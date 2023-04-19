@@ -24,10 +24,6 @@ public class UtilityReasoner : MonoBehaviour
         foreach (var option in options)
         {
             float weight = option.CalculateWeight();
-            if (!(this is SpacialReasoner))
-            {
-                Debug.Log("NAME: " + option.gameObject.name + ", WEIGHT: " + weight);
-            }
             if (weight > maxWeight)
             {
                 maxWeight = weight;
