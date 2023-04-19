@@ -9,6 +9,7 @@ public class Moth_Movement: MonoBehaviour
 {
     public string destStateKey;
     public GlobalActorState globalState;
+    public LearningStore learningStore;
     public string currentPosObj = "";
     public int hungerRecoveryFromPellets = 2;
     public float targetPositionNoise = .5f;
@@ -86,6 +87,7 @@ public class Moth_Movement: MonoBehaviour
             Destroy(other.gameObject);
             state.hunger -= hungerRecoveryFromPellets;
             state.hunger = Mathf.Max(0, state.hunger);
+            learningStore.ModifyLastActionWeight(10);
         }
     }
 

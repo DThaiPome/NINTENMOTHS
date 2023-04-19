@@ -5,7 +5,7 @@ using UnityEngine;
 public class BTReasoner : ABTNode
 {
     UtilityReasoner reasoner;
-    IReasonerAction currentAction;
+    protected IReasonerAction currentAction;
 
     private void Awake()
     {

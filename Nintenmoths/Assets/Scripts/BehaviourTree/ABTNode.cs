@@ -112,4 +112,9 @@ public abstract class ABTNode : AReasonerAction
     {
         return parentNode && (parentNode.ourContext.TryReplaceVal(key, value) || parentNode.TryReplaceUpperContextVal(key, value));
     }
+
+    public void SetVal(string key, string value)
+    {
+        ourContext.SetVal(key, value);
+    }
 }

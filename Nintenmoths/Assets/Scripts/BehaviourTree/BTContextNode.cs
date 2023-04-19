@@ -10,6 +10,8 @@ public class BTContextNode : ABTNode
     [SerializeField]
     private List<StringVal> stringVals;
 
+    private List<StringVal> preInitStringVals;
+
     [Serializable]
     private class FloatVal
     {
@@ -26,11 +28,27 @@ public class BTContextNode : ABTNode
 
     private ABTNode child;
 
+    public void AddPreInitStringVal(string key, string val)
+    {
+        if (preInitStringVals == null)
+        {
+            preInitStringVals = new List<StringVal>();
+        }
+        StringVal stringVal = new StringVal();
+        stringVal.key = key;
+        stringVal.val = val;
+        preInitStringVals.Add(stringVal);
+    }
+
     protected override void OnAwake()
     {
         foreach (FloatVal floatVal in floatVals)
         {
             ourContext.SetVal(floatVal.key, floatVal.val);
+        }
+        if (preInitStringVals != null)
+        {
+            stringVals.AddRange(preInitStringVals);
         }
         foreach (StringVal stringVal in stringVals)
         {

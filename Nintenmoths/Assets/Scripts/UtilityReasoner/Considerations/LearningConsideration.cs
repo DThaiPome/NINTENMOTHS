@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class LearningConsideration : AConsideration
+public class LearningConsideration : ASpacialConsideration
 {
     [SerializeField]
     private string learningKey;
+    [SerializeField]
+    private bool useSpacialReasoner = false;
 
     private Func<LearningStore> learningStoreGetter;
 
@@ -27,6 +29,15 @@ public class LearningConsideration : AConsideration
         {
             addend = 0;
             coeff = 1;
+        }
+    }
+
+    public override void SetLocation(Vector3 location, string name)
+    {
+        base.SetLocation(location, name);
+        if (useSpacialReasoner)
+        {
+            learningKey = name;
         }
     }
 }

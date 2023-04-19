@@ -9,6 +9,11 @@ public class UtilityReasoner : MonoBehaviour
 
     private void Awake()
     {
+        OnAwake();
+    }
+
+    protected virtual void OnAwake()
+    {
         options = new List<ReasonerOption>(Util.GetComponentsInChildrenNonRecursive<ReasonerOption>(this));
     }
 
