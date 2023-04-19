@@ -119,15 +119,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destStateKey: destObjName
   globalState: {fileID: 8736269390309411236}
+  learningStore: {fileID: 630609691386046510}
   currentPosObj: 
   hungerRecoveryFromPellets: 2
+  targetPositionNoise: 0.5
   pos_xbound: 9
   neg_xbound: -9
-  pos_ybound: 10
-  neg_ybound: 0
+  pos_ybound: 9.5
+  neg_ybound: 0.5
   x_pos: 0
   y_pos: 0
-  speed: 5
+  speed: 10
 --- !u!114 &8736269390309411236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84eb3325df28f294fa7c8d40a6bdd0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionKeyCacheSize: 3
+  actionKeyCacheSize: 4
 --- !u!114 &660691588226116509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,10 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   learningStore: {fileID: 630609691386046510}
   mothState: {fileID: 1631324761910767915}
-  weightIncreasePerFood: 2
+  weightIncreasePerFood: 3.5
   weightIncreaseHungerCoeff: 0.5
   considerRadius: 7
-  weightDecayRate: -1
+  weightDecayRate: -0.2
   weightDecayHungerMinimum: 1
   tapWeightChange: -2
 --- !u!114 &1631324761910767915

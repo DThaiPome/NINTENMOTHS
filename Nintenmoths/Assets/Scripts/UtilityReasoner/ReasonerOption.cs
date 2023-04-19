@@ -23,6 +23,11 @@ public class ReasonerOption : MonoBehaviour
 
     void Awake()
     {
+        RefreshConsiderations();
+    }
+
+    public void RefreshConsiderations()
+    {
         considerations = new List<AConsideration>(Util.GetComponentsInChildrenNonRecursive<AConsideration>(this));
     }
 

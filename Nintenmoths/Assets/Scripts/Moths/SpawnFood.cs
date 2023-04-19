@@ -62,7 +62,15 @@ public class SpawnFood : MonoBehaviour
 
     private void FoodHolding()
     {
-        currentFood.transform.position = GetPositionFromMouse();
+        if (currentFood != null)
+        {
+            currentFood.transform.position = GetPositionFromMouse();
+        }
+        else
+        {
+            currentFood = null;
+            holdingFood = false;
+        }
     }
 
     private void FoodRelease()

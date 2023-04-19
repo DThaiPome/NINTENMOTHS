@@ -2,6 +2,9 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+/Build/
+/Build.zip
+
 /Nintenmoths/[Ll]ibrary/
 /Nintenmoths/[Tt]emp/
 /Nintenmoths/[Oo]bj/
