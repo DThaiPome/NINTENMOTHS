@@ -121,13 +121,14 @@ MonoBehaviour:
   globalState: {fileID: 8736269390309411236}
   currentPosObj: 
   hungerRecoveryFromPellets: 2
+  targetPositionNoise: 0.5
   pos_xbound: 9
   neg_xbound: -9
-  pos_ybound: 10
-  neg_ybound: 0
+  pos_ybound: 9.5
+  neg_ybound: 0.5
   x_pos: 0
   y_pos: 0
-  speed: 5
+  speed: 10
 --- !u!114 &8736269390309411236
 MonoBehaviour:
   m_ObjectHideFlags: 0

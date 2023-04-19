@@ -24,13 +24,17 @@ public class Moth_Movement: MonoBehaviour
 
     private MothState state;
 
+    private float originalXScale;
+
     private bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
         this.x_pos = 0;
         this.y_pos = 5;
+        this.originalXScale = transform.localScale.x;
         this.next_pos = new Vector3(Random.Range(pos_xbound, neg_xbound), Random.Range(pos_ybound, neg_ybound), -10);
+        UpdateDirection();
         state = GetComponent<MothState>();
         moving = true;
         state.moving = true;
@@ -93,5 +97,18 @@ public class Moth_Movement: MonoBehaviour
         Vector3 offset = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1)) * targetPositionNoise;
         Vector3 realPos = new Vector3(next_position.x + offset.x, next_position.y + offset.y, -10);
         this.next_pos = realPos;
+        UpdateDirection();
+    }
+
+    private void UpdateDirection()
+    {
+        if (this.next_pos.x > transform.position.x)
+        {
+            this.transform.localScale = new Vector3(-this.originalXScale, this.transform.localScale.y, this.transform.localScale.z);
+        }
+        else
+        {
+            this.transform.localScale = new Vector3(this.originalXScale, this.transform.localScale.y, this.transform.localScale.z);
+        }
     }
 }
