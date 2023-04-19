@@ -11,6 +11,7 @@ public class Moth_Movement: MonoBehaviour
     public GlobalActorState globalState;
     public string currentPosObj = "";
     public int hungerRecoveryFromPellets = 2;
+    public float targetPositionNoise = .5f;
 
     public float pos_xbound = 9;
     public float neg_xbound = -9;
@@ -89,6 +90,8 @@ public class Moth_Movement: MonoBehaviour
 
     public void Assign_Next_Pos(Vector3 next_position)
     {
-        this.next_pos = next_position;
+        Vector3 offset = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1)) * targetPositionNoise;
+        Vector3 realPos = new Vector3(next_position.x + offset.x, next_position.y + offset.y, -10);
+        this.next_pos = realPos;
     }
 }
