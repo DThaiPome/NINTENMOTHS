@@ -22,11 +22,15 @@ public class Moth_Movement: MonoBehaviour
     public float speed = 1;
     private Vector3 next_pos= new Vector3(0, 0, -10);
 
+    private Vector3 corePos;
+
     private MothState state;
 
     private float originalXScale;
 
     private bool moving = false;
+
+    private float t;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,7 @@ public class Moth_Movement: MonoBehaviour
         this.y_pos = 5;
         this.originalXScale = transform.localScale.x;
         this.next_pos = new Vector3(Random.Range(pos_xbound, neg_xbound), Random.Range(pos_ybound, neg_ybound), -10);
+        this.corePos = transform.position;
         UpdateDirection();
         state = GetComponent<MothState>();
         moving = true;
@@ -48,7 +53,7 @@ public class Moth_Movement: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position == this.next_pos)
+        if (Vector3.Distance(corePos, next_pos) < .001f)
         {
             moving = false;
             state.moving = false;
@@ -56,13 +61,22 @@ public class Moth_Movement: MonoBehaviour
         else
         {
             float step = this.speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, this.next_pos, step);
+            corePos = Vector3.MoveTowards(transform.position, this.next_pos, step);
+            transform.position = RealPosition();
         }
         
         if (globalState.TryGetVal(destStateKey, out string statePosObj) && statePosObj != currentPosObj)
         {
             SetPosToObject(statePosObj);
         }
+    }
+
+    private Vector3 RealPosition()
+    {
+        t += Time.deltaTime;
+        t %= 2 * Mathf.PI;
+        Vector3 offset = Vector3.up * Mathf.Sin(t * Mathf.Rad2Deg * .5f) * .02f;
+        return corePos + offset;
     }
 
     private void OnTriggerEnter(Collider other)
