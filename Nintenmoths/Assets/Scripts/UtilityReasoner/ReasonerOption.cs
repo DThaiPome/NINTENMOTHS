@@ -38,10 +38,6 @@ public class ReasonerOption : MonoBehaviour
         foreach (var consideration in considerations)
         {
             consideration.Calculate();
-            if (name == "LandOnGround")
-            {
-                Debug.Log("NAME: " + consideration.name + ", ADDEND: " + consideration.calculatedAddend + ", COEFF: " + consideration.calculatedCoeff);
-            }
             addend += consideration.calculatedAddend;
             coeff *= consideration.calculatedCoeff;
         }
