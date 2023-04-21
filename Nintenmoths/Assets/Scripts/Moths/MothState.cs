@@ -33,42 +33,39 @@ public class MothState : MonoBehaviour
     [SerializeField]
     private float maxExhaustion = 10;
 
-    private float hungerState;
     public float hunger
     {
         get
         {
-            return hungerState;
+            globalStateObj.TryGetVal("hunger", out float val);
+            return val;
         }
         set
         {
-            hungerState = value;
             globalStateObj.SetVal("hunger", value);
         }
     }
-    private float thirstState;
     public float thirst
     {
         get
         {
-            return thirstState;
+            globalStateObj.TryGetVal("thirst", out float val);
+            return val;
         }
         set
         {
-            thirstState = value;
             globalStateObj.SetVal("thirst", value);
         }
     }
-    private float exhaustionState;
     public float exhaustion
     {
         get
         {
-            return exhaustionState;
+            globalStateObj.TryGetVal("exhaustion", out float val);
+            return val;
         }
         set
         {
-            exhaustionState = value;
             globalStateObj.SetVal("exhaustion", value);
         }
     }

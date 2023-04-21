@@ -174,7 +174,7 @@ MonoBehaviour:
   weightIncreasePerFood: 3.5
   weightIncreaseHungerCoeff: 0.5
   considerRadius: 7
-  weightDecayRate: -0.2
+  weightDecayRate: 0
   weightDecayHungerMinimum: 1
   tapWeightChange: -2
 --- !u!114 &1631324761910767915
