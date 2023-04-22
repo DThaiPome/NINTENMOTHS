@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 8307770485877121272, guid: a4a65c362200c2f4185d1df38488ffd0, type: 3}
-  foodCooldownSeconds: 2
+  foodCooldownSeconds: 0.75
   axis: Fire2

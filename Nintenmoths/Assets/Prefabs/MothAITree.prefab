@@ -1989,7 +1989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3567258020649996022, guid: a1d71d03296134f47b784f2205688abc, type: 3}
       propertyPath: addendMax
-      value: 2
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1d71d03296134f47b784f2205688abc, type: 3}

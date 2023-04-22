@@ -171,10 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   learningStore: {fileID: 630609691386046510}
   mothState: {fileID: 1631324761910767915}
-  weightIncreasePerFood: 3.5
+  weightIncreasePerFood: 20
   weightIncreaseHungerCoeff: 0.5
-  considerRadius: 7
-  weightDecayRate: 0
+  considerRadius: 3
+  weightDecayRate: -0.1
   weightDecayHungerMinimum: 1
   tapWeightChange: -2
 --- !u!114 &1631324761910767915
